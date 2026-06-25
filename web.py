@@ -3,7 +3,7 @@ import os
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse
 
-from API_Fallback import ask_openai
+from API_Fallback import ask_gemini
 from chatbot_csv_handler import get_chatbot_response, load_dataset, load_short_forms
 from db_Config import init_database, query_local_db
 from networkDiagnostics import is_online
@@ -26,9 +26,9 @@ def build_response(user_input: str) -> tuple[str, str]:
         return dataset_answer, "Dataset"
 
     if not is_online():
-        return "Network connection is unavailable. OpenAI cannot be reached right now.", "System"
+        return "Network connection is unavailable. Gemini cannot be reached right now.", "System"
 
-    return ask_openai(user_input), "OpenAI"
+    return ask_gemini(user_input), "Gemini"
 
 
 class ChatbotWebHandler(SimpleHTTPRequestHandler):

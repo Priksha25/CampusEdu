@@ -15,6 +15,29 @@ CampusEdu is a highly interactive, intelligent chatbot framework that seamlessly
   - **Console (CLI)**: Beautiful terminal user interface built using the `rich` library with spin loaders, status headers, and panels.
   - **Web Dashboard**: An interactive, responsive browser chat application served locally.
 - **Automatic Environment Verification**: A helper startup script ensures all dependencies are present and up to date before launching.
+- **Docker Containerization**:
+  - Build once and run anywhere using Docker.
+  - Simplified deployment and dependency management.
+  - Supports both CLI and Web Dashboard execution.
+
+---
+
+## 👥 Contributors
+
+| Name | Contribution |
+|------|-------------|
+| Anurag | Frontend Development, API Integration, Deployment |
+| Priksha Nehra | Backend Development, Research, Data Collection |
+| Gurjeet Singh | Testing, Docker Configuration and Containerization |
+
+---
+
+## 📥 Clone the Repository
+
+```bash
+git clone https://github.com/<your-username>/CampusEdu.git
+cd CampusEdu
+```
 
 ---
 
@@ -83,6 +106,53 @@ CampusEdu.bat
 
 ---
 
+## 🐳 Docker Support
+
+CampusEdu can be deployed and executed inside a Docker container, ensuring a consistent environment across different systems.
+
+### Build the Docker Image
+
+```bash
+docker build -t campusedu .
+```
+
+### Run the Container
+
+```bash
+docker run -it --env-file .env campusedu
+```
+
+### Run with Port Mapping (Web Interface)
+
+```bash
+docker run -it -p 8000:8000 --env-file .env campusedu
+```
+
+Then open:
+
+```text
+http://localhost:8000
+```
+
+### Docker Benefits
+
+* Consistent environment across Windows, Linux, and macOS
+* Simplified deployment process
+* Dependency isolation
+* Easy scalability and distribution
+* Faster onboarding for new contributors
+
+### Verify Docker Installation
+
+```bash
+docker --version
+docker compose version
+```
+
+If Docker is installed correctly, both commands should display version information.`
+
+---
+
 ## 💬 Chatbot Commands (CLI Mode)
 
 When chatting in the CLI, you can use these special commands to control the session:
@@ -102,8 +172,10 @@ When chatting in the CLI, you can use these special commands to control the sess
 
 ```plaintext
 ├── .env                     # API key configurations
-├── requirement.txt          # Python dependencies
+├── requirements.txt          # Python dependencies
 ├── CampusEdu.bat            # One-click Windows startup script
+├── Dockerfile               # Docker container configuration
+├── .dockerignore            # Docker ignore rules
 ├── check_requirements.py    # Requirement checking utility
 ├── main.py                  # CLI Orchestration pipeline (Main entrypoint)
 ├── web.py                   # Web server entrypoint
@@ -115,3 +187,16 @@ When chatting in the CLI, you can use these special commands to control the sess
 ├── data/                    # Local storage directory for dataset files
 └── web_static/              # Frontend files for the Web Chatbot UI (HTML, CSS, JS)
 ```
+
+---
+
+## 🧰 Technology Stack
+
+- Python
+- HTML, CSS, JavaScript
+- OpenAI API
+- Google Gemini API
+- Docker
+- Rich (CLI UI)
+- CSV Dataset Processing
+- PDF & DOCX Parsing

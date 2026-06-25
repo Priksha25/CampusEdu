@@ -31,7 +31,7 @@ from rich.markup import escape
 from db_Config import init_database, query_local_db
 from networkDiagnostics import is_online
 from chatbot_csv_handler import load_dataset, get_chatbot_response, load_short_forms
-from API_Fallback import ask_openai
+from API_Fallback import ask_openai, ask_gemini
 from document_qa import ask_llm, extract_text_from_pdf, extract_text_from_docx
 
 # ── Setup ─────────────────────────────────────────────────────────────────────
@@ -47,7 +47,7 @@ USER_COLOR    = "bright_green"
 SOURCE_COLORS = {
     "Database":  "yellow",
     "Dataset":   "bright_blue",
-    "OpenAI":    "magenta",
+    "Gemini":    "magenta",
     "Doc Q&A":   "bright_yellow",
     "System":    "red",
 }
@@ -74,7 +74,7 @@ def print_header():
     subtitle.append("\n  Powered by ", style="dim white")
     subtitle.append("Local Knowledge Base", style="bold bright_cyan")
     subtitle.append(" + ", style="dim white")
-    subtitle.append("OpenAI", style="bold magenta")
+    subtitle.append("Gemini", style="bold magenta")
 
     console.print(Panel(
         Align.center(title + subtitle),
@@ -174,12 +174,12 @@ def chatbot_response(user_input: str):
     if dataset_response:
         return dataset_response, "Dataset"
 
-    # 3. Online / OpenAI
+    # 3. Online / Gemini
     if not is_online():
         return "Network connection is unavailable. Cannot perform online search.", "System"
 
-    answer = ask_openai(user_input)
-    return answer, "OpenAI"
+    answer = ask_gemini(user_input)
+    return answer, "Gemini"
 
 
 # ── Main loop ─────────────────────────────────────────────────────────────────

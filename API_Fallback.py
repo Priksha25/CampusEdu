@@ -21,7 +21,7 @@ else:
                 key, value = line.split("=", 1)
                 os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
-GEMINI_MODEL = "gemini-2.0-flash"
+GEMINI_MODEL = "gemini-3-flash-preview"
 OPENAI_MODEL = "gpt-3.5-turbo"
 
 

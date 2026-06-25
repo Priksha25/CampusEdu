@@ -20,18 +20,6 @@ def load_dataset(csv_path: str):
                 dataset.append({'inputs': inputs, 'responses': responses})
     return dataset
 
-# def get_chatbot_response(user_input: str, dataset: list) -> str:
-#     cleaned = user_input.lower().strip()
-#     cleaned = re.sub(r'[^\w\s]', '', cleaned)
-#     for entry in dataset:
-#         for pattern in entry['inputs']:
-#             if cleaned == pattern:
-#                 return random.choice(entry['responses'])
-#     for entry in dataset:
-#         for pattern in entry['inputs']:
-#             if re.search(r'\b' + re.escape(pattern) + r'\b', cleaned):
-#                 return random.choice(entry['responses'])
-#     return None
 
 def load_short_forms(file_path: str) -> dict[str, str]:
     short_forms = {}
